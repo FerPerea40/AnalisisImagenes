@@ -5,6 +5,10 @@
  */
 package analisisimagenes;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author Dell
@@ -16,6 +20,14 @@ public class AnalisisImagenes {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Image imagen;
+        BufferedImage bimagen;
+        //int rgb = bimagen.getRGB(45, 56);
+        
+        Color color =  new Color(255,255,255);
+        color.getRed();
+        color.getGreen();
+        color.getBlue();
     }
     
 }
