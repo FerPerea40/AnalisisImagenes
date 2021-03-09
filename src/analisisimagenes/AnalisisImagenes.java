@@ -8,6 +8,7 @@ package analisisimagenes;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import data.JframeImagen;
 
 /**
  *
@@ -19,15 +20,21 @@ public class AnalisisImagenes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Image imagen;
-        BufferedImage bimagen;
-        //int rgb = bimagen.getRGB(45, 56);
-        
-        Color color =  new Color(255,255,255);
-        color.getRed();
-        color.getGreen();
-        color.getBlue();
+       // visualización de la imagen dentro de la GUI
+      cambiarRGB (new Color(125,255,0),herramientas.HerramientasImagenes.abrirImagen());
+     
+      
+    }
+    
+    public static void cambiarRGB(Color color1, Image imagen ){
+    
+        // para cuantización de la imagen vamos a un ocupar BufferedImage
+           BufferedImage bImagen = herramientas.HerramientasImagenes.toBufferedImage(imagen);
+          JframeImagen frame = new JframeImagen(imagen);
+           color1 = new Color(125,255,0);
+           bImagen.setRGB(0,0,color1.getRGB());
+                  
+         JframeImagen frame1 = new JframeImagen(herramientas.HerramientasImagenes.toImage(bImagen));
     }
     
 }
