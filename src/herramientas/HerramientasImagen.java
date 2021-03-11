@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package herramientas;
 
 import java.awt.Graphics2D;
@@ -15,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author working
  */
-public class HerramientasImagenes {
+public class HerramientasImagen {
     
     public static Image abrirImagen (){
     
@@ -46,7 +51,7 @@ public class HerramientasImagenes {
             
             return toImage(bi);
         } catch (IOException ex) {
-            Logger.getLogger(HerramientasImagenes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HerramientasImagen.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     
