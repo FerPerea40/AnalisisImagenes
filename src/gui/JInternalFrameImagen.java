@@ -24,6 +24,7 @@ public class JInternalFrameImagen extends javax.swing.JInternalFrame {
         // establecer la imagen en la etiqueta
         this.jLabelImagen.setIcon(new ImageIcon(imagenOriginal));
         this.setSize(imagenOriginal.getWidth(null),imagenOriginal.getHeight(null));
+        
                 
     }
     
@@ -44,6 +45,9 @@ public class JInternalFrameImagen extends javax.swing.JInternalFrame {
         jLabelImagen = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(240, 230, 240));
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
