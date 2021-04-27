@@ -27,6 +27,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem5.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem6.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem7.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem8.addActionListener(new ModificarImagenListener(this));
 
     }
 
@@ -50,6 +51,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +112,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem7.setText("Expansiones");
         jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setText("Convolución");
+        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
@@ -193,6 +198,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 
     /**
