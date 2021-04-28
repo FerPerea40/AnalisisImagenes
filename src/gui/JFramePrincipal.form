@@ -65,7 +65,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Convoluci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Convoluci&#xf3;n 3x3"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Convoluci&#xf3;n 5x5"/>
               </Properties>
             </MenuItem>
           </SubComponents>

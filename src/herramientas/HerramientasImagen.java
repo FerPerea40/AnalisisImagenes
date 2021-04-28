@@ -205,8 +205,20 @@ public class HerramientasImagen {
         int auxR = 0, auxG = 0, auxB = 0;
         Color color = null;
         int k = 0;
-        for(int i = 0 , r = x -1; i<mascara.length;i++, r++){
-            for(int j = 0, c = y -1; j < mascara[0].length;j++, c++){
+        int auxr;
+         int auxc;
+
+        if(mascara.length == 3){
+          auxr =x-1; 
+          auxc =y-1; 
+
+        }else{
+          auxr =x-2; 
+          auxc =y-2; 
+        }
+        
+        for(int i = 0 , r = auxr; i<mascara.length;i++, r++){
+            for(int j = 0, c = auxc; j < mascara[0].length;j++, c++){
                 // todo: quitar el if
                 if(mascara[i][j]!=0){
                     try {

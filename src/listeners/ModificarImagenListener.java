@@ -8,6 +8,7 @@ package listeners;
 import espacial.Histograma;
 import gui.JFramePrincipal;
 import gui.JInternalFrameConv;
+import gui.JInternalFrameConv5;
 import gui.JInternalFrameExpa;
 import gui.JInternalFrameFiltro;
 import gui.JInternalFrameIlumi;
@@ -74,10 +75,18 @@ public class ModificarImagenListener implements ActionListener{
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
             
         }            
-             if (item.getText().equals("Convolución")){
+             if (item.getText().equals("Convolución 3x3")){
            JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
             Image imagen = internal2.getImagenOriginal();
             JInternalFrameConv internalNuevo2 = new JInternalFrameConv(internal2 ,imagen, this.framePrincipal);
+            internalNuevo2.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
+            
+        }
+             if (item.getText().equals("Convolución 5x5")){
+           JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            Image imagen = internal2.getImagenOriginal();
+            JInternalFrameConv5 internalNuevo2 = new JInternalFrameConv5(internal2 ,imagen, this.framePrincipal);
             internalNuevo2.setVisible(true);
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
             

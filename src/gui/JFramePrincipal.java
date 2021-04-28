@@ -28,6 +28,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem6.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem7.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem8.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem9.addActionListener(new ModificarImagenListener(this));
 
     }
 
@@ -52,6 +53,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,8 +115,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem7.setText("Expansiones");
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("Convolución");
+        jMenuItem8.setText("Convolución 3x3");
         jMenu2.add(jMenuItem8);
+
+        jMenuItem9.setText("Convolución 5x5");
+        jMenu2.add(jMenuItem9);
 
         jMenuBar1.add(jMenu2);
 
@@ -199,6 +204,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
     /**
