@@ -59,9 +59,9 @@ public class JInternalFrameConv extends javax.swing.JInternalFrame implements Ac
         matrizEnviar[1][1] = Integer.parseInt(jTextField5.getText());
         matrizEnviar[1][2] = Integer.parseInt(jTextField6.getText());
 
-        matrizEnviar[2][0] = Integer.parseInt(jTextField1.getText());
-        matrizEnviar[2][1] = Integer.parseInt(jTextField7.getText());
-        matrizEnviar[2][2] = Integer.parseInt(jTextField8.getText());
+        matrizEnviar[2][0] = Integer.parseInt(jTextField7.getText());
+        matrizEnviar[2][1] = Integer.parseInt(jTextField8.getText());
+        matrizEnviar[2][2] = Integer.parseInt(jTextField9.getText());
 
     
         int offset;
