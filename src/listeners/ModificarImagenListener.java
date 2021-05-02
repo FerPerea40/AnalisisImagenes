@@ -13,6 +13,7 @@ import gui.JInternalFrameExpa;
 import gui.JInternalFrameFiltro;
 import gui.JInternalFrameIlumi;
 import gui.JInternalFrameImagen;
+import gui.JInternalFrameKirsch;
 import gui.JInternalFrameModificar;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -87,6 +88,14 @@ public class ModificarImagenListener implements ActionListener{
            JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
             Image imagen = internal2.getImagenOriginal();
             JInternalFrameConv5 internalNuevo2 = new JInternalFrameConv5(internal2 ,imagen, this.framePrincipal);
+            internalNuevo2.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
+            
+        }
+                if (item.getText().equals("Kirsch")){
+           JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            Image imagen = internal2.getImagenOriginal();
+            JInternalFrameKirsch internalNuevo2 = new JInternalFrameKirsch(internal2 ,imagen, this.framePrincipal);
             internalNuevo2.setVisible(true);
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
             

@@ -29,6 +29,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem7.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem8.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem9.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem10.addActionListener(new ModificarImagenListener(this));
 
     }
 
@@ -54,6 +55,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +122,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem9.setText("Convolución 5x5");
         jMenu2.add(jMenuItem9);
+
+        jMenuItem10.setText("Kirsch");
+        jMenu2.add(jMenuItem10);
 
         jMenuBar1.add(jMenu2);
 
@@ -197,6 +202,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

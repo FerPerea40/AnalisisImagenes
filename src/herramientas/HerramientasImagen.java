@@ -22,7 +22,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author working
  */
 public class HerramientasImagen {
-
+ private static Image imagenOriginal;
+    private static double kernel[][];
     public static Image abrirImagen() {
 
         try {
@@ -183,7 +184,7 @@ public class HerramientasImagen {
     }
     
     
-      public static Image aplicarConvolucion(Image io,int[][] mascara, int div, int offset){
+    public static Image aplicarConvolucion(Image io,int[][] mascara, int div, int offset){
 
         BufferedImage bi = HerramientasImagen.toBufferedImage(io);
         BufferedImage bnuevo = new BufferedImage(bi.getWidth(),bi.getHeight(),BufferedImage.TYPE_INT_RGB);
@@ -246,10 +247,106 @@ public class HerramientasImagen {
         return color.getRGB();
     }
 
+    public static Image aplicarKirsch(int divisor, Image io){
+       HerramientasImagen.kernel = new double[3][3];
+       HerramientasImagen.imagenOriginal=io;
+       BufferedImage nueva = new BufferedImage(HerramientasImagen.imagenOriginal.getWidth(null),HerramientasImagen.imagenOriginal.getHeight(null),BufferedImage.TYPE_INT_RGB);
+       BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
+        
+       //System.out.println("W:"+nueva.getWidth()+"H:"+nueva.getHeight());
+       //proceso iterativo para generar un imagen nueva
+       for(int x=0; x<HerramientasImagen.imagenOriginal.getWidth(null);x++){
+           for(int y=0; y<HerramientasImagen.imagenOriginal.getHeight(null);y++){
+           double muestra[][] =extraerMuestra(x,y,bi);
+            //System.out.println(x+","+y);
+            // validar que la muestra se generó 
+            if(muestra!=null){
+             // proceso evolutivo para Kirsch
+            // recorremos las mascaras     
+                 
+           // Color colorRes = convulacionar(kernel,muestra,divisor);
+            Color colorRes = convolucionarKirsch(muestra,divisor);
+            
+            nueva.setRGB(x, y, colorRes.getRGB());
+            
+            }else{
+            nueva.setRGB(x, y, new Color(255,255,255).getRGB());
+            
+            }
+                 
+           }
+       }
+       
+       return herramientas.HerramientasImagen.toImage(nueva);
+    }
+     
+     
+     
+     
+      public static Color convulacionar(double[][] kernel, double[][] muestra, int divisor) {
+        int acumuladorR = 0;
+        int acumuladorG = 0;
+        int acumuladorB = 0;
+        Color aux;
+        // recorremos el kernel y la muestra 
+        for(int x=0; x<kernel[0].length;x++)
+            for(int y=0; y<kernel[0].length;y++){
+         aux = new Color((int)muestra[x][y]);
+         acumuladorR+=(kernel[x][y]*aux.getRed());
+         acumuladorG+=(kernel[x][y]*aux.getGreen());
+         acumuladorB+=(kernel[x][y]*aux.getBlue());
+        
+         }
+        acumuladorR/=divisor;
+        acumuladorG/=divisor;
+        acumuladorB/=divisor;
+        
+        return new Color(verificar(acumuladorR),verificar(acumuladorG),verificar(acumuladorB));
+        
+    }
+      private static double[][] extraerMuestra(int x, int y, BufferedImage bi) {
+        double matriz[][] = new double[HerramientasImagen.kernel[0].length][HerramientasImagen.kernel[0].length];
+       int xx=0;
+        int yy=0;
+        try {
+         // recorremos la imagen 
+         for(int i=x-(HerramientasImagen.kernel[0].length-1)/2;i<=x+(HerramientasImagen.kernel[0].length-1)/2;i++){
+            for(int j=y-(HerramientasImagen.kernel[0].length-1)/2;j<=y+(HerramientasImagen.kernel[0].length-1)/2;j++){
+            matriz[xx][yy] = bi.getRGB(i,j);
+            yy++;
+            }
+            yy=0;
+            xx++;
+         }
+          return matriz;
+        } catch (Exception e) {
+           // System.out.println("Indice no valido");
+            return null;
+        }
+       
+    }
+     
+       private static Color convolucionarKirsch(double[][] muestra, int divisor) {
+        // recorremos las mascaras 
+        int mayorR = -1;
+        int mayorG = -1;
+        int mayorB = -1;
+        int r,g,b;
+        for(int i=0; i<8;i++){
+           Color color = convulacionar(herramientas.MascarasBordes.arregloMascaras[i], muestra, divisor);
+           r = color.getRed();
+           g = color.getGreen();
+           b = color.getBlue();
+           if(r>mayorR)mayorR=r;
+           if(g>mayorG)mayorG=g;
+           if(b>mayorB)mayorB=b;
+        
+        }
+        return new Color(verificar(mayorR),verificar(mayorG), verificar(mayorB));
+        
+    }
     
-    
-    
-    public static int verificar(int valor) {
+          public static int verificar(int valor) {
         if (valor > 255) {
             return 255;
         }
