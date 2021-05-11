@@ -30,6 +30,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem8.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem9.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem10.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem11.addActionListener(new ModificarImagenListener(this));
 
     }
 
@@ -56,6 +57,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,6 +127,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem10.setText("Kirsch");
         jMenu2.add(jMenuItem10);
+
+        jMenuItem11.setText("Ruido Pimienta/Sal");
+        jMenu2.add(jMenuItem11);
 
         jMenuBar1.add(jMenu2);
 
@@ -203,6 +208,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

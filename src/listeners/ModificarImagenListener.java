@@ -15,6 +15,7 @@ import gui.JInternalFrameIlumi;
 import gui.JInternalFrameImagen;
 import gui.JInternalFrameKirsch;
 import gui.JInternalFrameModificar;
+import gui.JInternalFrameSal;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -100,7 +101,14 @@ public class ModificarImagenListener implements ActionListener{
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
             
         }
-        
+                 if (item.getText().equals("Ruido Pimienta/Sal")){
+           JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            Image imagen = internal2.getImagenOriginal();
+            JInternalFrameSal internalNuevo2 = new JInternalFrameSal(internal2 ,imagen, this.framePrincipal);
+            internalNuevo2.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
+            
+        }
     }
     
 }
