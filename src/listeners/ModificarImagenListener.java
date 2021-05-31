@@ -109,6 +109,51 @@ public class ModificarImagenListener implements ActionListener{
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
             
         }
+                  if (item.getText().equals("Eliminar Ruido")){
+           JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            Image imagen = internal2.getImagenOriginal();
+            
+          Image nueva = herramientas.HerramientasImagen.MaxMin(imagen);
+
+            JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(nueva);
+            internalNuevo2.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
+            
+        }
+                    if (item.getText().equals("Frecuencias Grises")){
+           JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+             
+             Image imagen = internal2.getImagenOriginal();
+            
+             herramientas.HerramientasImagen.FrecuenciasGrises(imagen,this.framePrincipal);
+             //Image nueva2 = herramientas.HerramientasImagen.FrecuenciasInv(imagen);
+
+//            JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(nueva);
+//            internalNuevo2.setVisible(true);
+//            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
+            
+//            
+//            JInternalFrameImagen internalNuevo22 = new JInternalFrameImagen(nueva2);
+//            internalNuevo22.setVisible(true);
+//            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo22);
+        }
+                    if (item.getText().equals("Frecuencias RGB")){
+           JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+             
+             Image imagen = internal2.getImagenOriginal();
+            
+             herramientas.HerramientasImagen.FrecuenciasRGB(imagen,this.framePrincipal);
+             //Image nueva2 = herramientas.HerramientasImagen.FrecuenciasInv(imagen);
+
+//            JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(nueva);
+//            internalNuevo2.setVisible(true);
+//            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
+            
+//            
+//            JInternalFrameImagen internalNuevo22 = new JInternalFrameImagen(nueva2);
+//            internalNuevo22.setVisible(true);
+//            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo22);
+        }
     }
     
 }

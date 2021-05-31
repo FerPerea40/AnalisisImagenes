@@ -5,6 +5,8 @@
  */
 package herramientas;
 
+import gui.JFramePrincipal;
+import gui.JInternalFrameImagen;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -400,4 +402,167 @@ public class HerramientasImagen {
         }
         return valor;
     }
+
+    public static Image MaxMin(Image io) {
+
+        BufferedImage bi = HerramientasImagen.toBufferedImage(io);
+        BufferedImage bnuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+        // recorres el buffer
+        for (int x = 0; x < bi.getWidth(); x++) {
+            for (int y = 0; y < bi.getHeight(); y++) {
+                if (bi.getRGB(x, y) == new Color(0, 0, 0).getRGB()) {
+                    int rgb = Maximizar(x, y, bi);
+                    bnuevo.setRGB(x, y, rgb);
+                } else if (bi.getRGB(x, y) == new Color(255, 255, 255).getRGB()) {
+                    int rgb = Minimizar(x, y, bi);
+                    bnuevo.setRGB(x, y, rgb);
+                }else{
+                 bnuevo.setRGB(x, y, bi.getRGB(x, y));
+                }
+            }
+        }
+        return HerramientasImagen.toBufferedImage(bnuevo);
+    }
+
+    private static int Maximizar(int x, int y, BufferedImage bi) {
+
+               
+        Color MaxPixel = new Color(bi.getRGB(x, y));
+        int MauxR =  MaxPixel.getRed(),
+            MauxG = MaxPixel.getGreen(),
+            MauxB = MaxPixel.getBlue();
+        
+        
+        Color color = null;
+
+        int auxr;
+        int auxc;
+
+        auxr = x - 2;
+        auxc = y - 2;
+
+        for (int i = 0, r = auxr; i < 5; i++, r++) {
+            for (int j = 0, c = auxc; j < 5; j++, c++) {
+                // todo: quitar el if
+              
+               try {
+                        int rgb = bi.getRGB(r, c);
+                        color = new Color(rgb);
+                       
+                        // acomodar la multiplicación
+                        if(MauxR<color.getRed()){
+                        MauxR = color.getRed();
+                        }
+                        if(MauxG<color.getGreen()){
+                        MauxG =color.getGreen();
+                        }
+                        if(MauxB<color.getBlue()){
+                        MauxB = color.getBlue();
+                        }
+
+                    } catch (Exception e) {
+                        // nada de nada 
+                    }
+                
+               
+                
+            }
+        }
+        // quitar k
+      
+        color = new Color(verificar(MauxR), verificar(MauxG), verificar(MauxB));
+        return color.getRGB();
+    }
+
+    
+    private static int Minimizar(int x, int y, BufferedImage bi) {
+
+         Color MaxPixel = new Color(bi.getRGB(x, y));
+        int MauxR =  MaxPixel.getRed(),
+            MauxG = MaxPixel.getGreen(),
+            MauxB = MaxPixel.getBlue();
+        
+        
+        Color color = null;
+
+        int auxr;
+        int auxc;
+
+        auxr = x - 2;
+        auxc = y - 2;
+
+        for (int i = 0, r = auxr; i < 5; i++, r++) {
+            for (int j = 0, c = auxc; j < 5; j++, c++) {
+                // todo: quitar el if
+                
+               try {
+                        int rgb = bi.getRGB(r, c);
+                        color = new Color(rgb);
+                       
+                        // acomodar la multiplicación
+                        if(MauxR>color.getRed()){
+                        MauxR = color.getRed();
+                        }
+                        if(MauxG>color.getGreen()){
+                        MauxG =color.getGreen();
+                        }
+                        if(MauxB>color.getBlue()){
+                        MauxB = color.getBlue();
+                        }
+
+                    } catch (Exception e) {
+                        // nada de nada 
+                    }
+                        
+                
+            }
+        }
+        // quitar k
+      
+        color = new Color(verificar(MauxR), verificar(MauxG), verificar(MauxB));
+        return color.getRGB();
+    }
+    
+    
+    public static Image FrecuenciasGrises(Image io, JFramePrincipal j) {
+ BufferedImage bi = HerramientasImagen.toBufferedImage(io);
+        BufferedImage bnuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+        // recorres el buffer
+        GestorGrises g = new GestorGrises (bi);
+        
+            bnuevo = g.obtenerImagenFrecuencias(true);
+            JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(bnuevo);
+            internalNuevo2.setVisible(true);
+            j.getjDesktopPanePrincipal().add(internalNuevo2);
+            bnuevo = g.obtenerImagenEspacial();
+            JInternalFrameImagen internalNuevo23 = new JInternalFrameImagen(bnuevo);
+            internalNuevo23.setVisible(true);
+            j.getjDesktopPanePrincipal().add(internalNuevo23);
+         return HerramientasImagen.toBufferedImage(bnuevo);
+    }
+    
+    public static Image FrecuenciasRGB(Image io, JFramePrincipal j) {
+
+        BufferedImage bi = HerramientasImagen.toBufferedImage(io);
+        BufferedImage bnuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+        // recorres el buffer
+        Gestor g = new Gestor (bi);
+        
+            bnuevo = g.obtenerImagenFrecuencias(true);
+            JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(bnuevo);
+            internalNuevo2.setVisible(true);
+            j.getjDesktopPanePrincipal().add(internalNuevo2);
+            bnuevo = g.obtenerImagenEspacial();
+            JInternalFrameImagen internalNuevo23 = new JInternalFrameImagen(bnuevo);
+            internalNuevo23.setVisible(true);
+            j.getjDesktopPanePrincipal().add(internalNuevo23);
+            
+            
+            
+                
+                
+                
+        return HerramientasImagen.toBufferedImage(bnuevo);
+    }
+    
 }

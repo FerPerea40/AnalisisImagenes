@@ -31,6 +31,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem9.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem10.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem11.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem12.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem13.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem14.addActionListener(new ModificarImagenListener(this));
 
     }
 
@@ -58,6 +61,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +136,15 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem11.setText("Ruido Pimienta/Sal");
         jMenu2.add(jMenuItem11);
+
+        jMenuItem12.setText("Eliminar Ruido");
+        jMenu2.add(jMenuItem12);
+
+        jMenuItem14.setText("Frecuencias Grises");
+        jMenu2.add(jMenuItem14);
+
+        jMenuItem13.setText("Frecuencias RGB");
+        jMenu2.add(jMenuItem13);
 
         jMenuBar1.add(jMenu2);
 
@@ -209,6 +224,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
