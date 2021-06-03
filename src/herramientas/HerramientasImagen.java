@@ -6,6 +6,7 @@
 package herramientas;
 
 import gui.JFramePrincipal;
+import gui.JInternalFrameFiltrado;
 import gui.JInternalFrameImagen;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -525,44 +526,34 @@ public class HerramientasImagen {
     
     
     public static Image FrecuenciasGrises(Image io, JFramePrincipal j) {
- BufferedImage bi = HerramientasImagen.toBufferedImage(io);
+        BufferedImage bi = HerramientasImagen.toBufferedImage(io);
         BufferedImage bnuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
         // recorres el buffer
+        
+        
+        
         GestorGrises g = new GestorGrises (bi);
         
             bnuevo = g.obtenerImagenFrecuencias(true);
             JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(bnuevo);
             internalNuevo2.setVisible(true);
             j.getjDesktopPanePrincipal().add(internalNuevo2);
-            bnuevo = g.obtenerImagenEspacial();
-            JInternalFrameImagen internalNuevo23 = new JInternalFrameImagen(bnuevo);
-            internalNuevo23.setVisible(true);
-            j.getjDesktopPanePrincipal().add(internalNuevo23);
+            
+            
+            JInternalFrameFiltrado Filtro = new JInternalFrameFiltrado(j,io,bi.getHeight(),g);
+            Filtro.setVisible(true);
+            j.getjDesktopPanePrincipal().add(Filtro);
+            
+            
+           //esto es la inversa no importa ahorita 
+//            bnuevo = g.obtenerImagenEspacial();
+//            JInternalFrameImagen internalNuevo23 = new JInternalFrameImagen(bnuevo);
+//            internalNuevo23.setVisible(true);
+//            j.getjDesktopPanePrincipal().add(internalNuevo23);
+            
          return HerramientasImagen.toBufferedImage(bnuevo);
     }
     
-    public static Image FrecuenciasRGB(Image io, JFramePrincipal j) {
-
-        BufferedImage bi = HerramientasImagen.toBufferedImage(io);
-        BufferedImage bnuevo = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
-        // recorres el buffer
-        Gestor g = new Gestor (bi);
-        
-            bnuevo = g.obtenerImagenFrecuencias(true);
-            JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(bnuevo);
-            internalNuevo2.setVisible(true);
-            j.getjDesktopPanePrincipal().add(internalNuevo2);
-            bnuevo = g.obtenerImagenEspacial();
-            JInternalFrameImagen internalNuevo23 = new JInternalFrameImagen(bnuevo);
-            internalNuevo23.setVisible(true);
-            j.getjDesktopPanePrincipal().add(internalNuevo23);
-            
-            
-            
-                
-                
-                
-        return HerramientasImagen.toBufferedImage(bnuevo);
-    }
+   
     
 }

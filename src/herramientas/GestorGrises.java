@@ -40,24 +40,24 @@ public class GestorGrises {
         return aux;
     }
 
-//    public void aplicarFiltro(NumeroComplejo[][] filtro) {
-//
-//        // recorrer el filtro 
-//        for (int x = 0; x < this.imagenOriginal.getWidth(); x++) {
-//            for (int y = 0; y < this.imagenOriginal.getHeight();y++) {
-//                // obtener el color el RGB de la parte de frecuencias
-//                if (filtro[x][y].getParteReal()<1){
-//                int rgb = obtenerPixelDominioFrecuencias(x,y,true);
-//                Color aux = new Color(rgb);
-//                int r = (int) (aux.getRed() * filtro[x][y].getParteReal());
-//                int g = (int) (aux.getGreen()* filtro[x][y].getParteReal());
-//                int b = (int) (aux.getBlue() * filtro[x][y].getParteReal());
-//                aux = new Color(r, g, b);
-//                setPixelDominioFrecuencias(x,y,true,aux.getRGB());}
-//            }
-//        }
-//
-//    }
+    public void aplicarFiltro(NumeroComplejo[][] filtro) {
+
+        // recorrer el filtro 
+        for (int x = 0; x < this.imagenOriginal.getWidth(); x++) {
+            for (int y = 0; y < this.imagenOriginal.getHeight();y++) {
+                // obtener el color el RGB de la parte de frecuencias
+                if (filtro[x][y].getParteReal()<1){
+                int rgb = obtenerPixelDominioFrecuencias(x,y,true);
+                Color aux = new Color(rgb);
+                int r = (int) (aux.getRed() * filtro[x][y].getParteReal());
+                int g = (int) (aux.getGreen()* filtro[x][y].getParteReal());
+                int b = (int) (aux.getBlue() * filtro[x][y].getParteReal());
+                aux = new Color(r, g, b);
+                setPixelDominioFrecuencias(x,y,true,aux.getRGB());}
+            }
+        }
+
+    }
 
     public BufferedImage obtenerImagenFrecuencias(boolean reAjustarCuadrante) {
         /// obtenemos las dimensiones
@@ -128,23 +128,23 @@ public class GestorGrises {
         return color;
     }
 
-//    private int obtenerPixelDominioFrecuencias(int x, int y, boolean encuadre) {
-//        /// obtenemos las dimensiones
-//        int anchoImagen = this.imagenOriginal.getWidth();
-//        int altoImagen = this.imagenOriginal.getHeight();
-//        // modificamos la posicion de los cuadrantes 
-//        int ejeX = encuadre ? (x + (anchoImagen / 2)) % anchoImagen : x;
-//        int ejeY = encuadre ? (y + (altoImagen / 2)) % altoImagen : y;
-//        
-//        // acumulamos 
-//        int valorColor = 0;
-//        for (CanalColor canal: CanalColor.values()){
-//        NumeroComplejo[][] aux = representacionFrecuencias.get(canal);
-//        valorColor += obtenerColorRealDeFrecuencia(ejeX, ejeY,aux, canal);
-//        }
-//        
-//        return valorColor;
-//    }
+    private int obtenerPixelDominioFrecuencias(int x, int y, boolean encuadre) {
+        /// obtenemos las dimensiones
+        int anchoImagen = this.imagenOriginal.getWidth();
+        int altoImagen = this.imagenOriginal.getHeight();
+        // modificamos la posicion de los cuadrantes 
+        int ejeX = encuadre ? (x + (anchoImagen / 2)) % anchoImagen : x;
+        int ejeY = encuadre ? (y + (altoImagen / 2)) % altoImagen : y;
+        
+        // acumulamos 
+        int valorColor = 0;
+       // for (CanalColor canal: CanalColor.values()){
+        NumeroComplejo[][] aux = representacionFrecuencias;
+        valorColor = obtenerColorRealDeFrecuencia(ejeX, ejeY,aux);
+        //}
+        
+        return valorColor;
+    }
 
     private void setPixelDominioFrecuencias(int x, int y, boolean encuadre, int color) {
          /// obtenemos las dimensiones
