@@ -25,44 +25,21 @@ public class HerramientasColor {
             return index;
             }
     }
-    public static int obtenerValorPorCanal(int rgb, CanalColor canal){
+    public static int obtenerValorPorCanal(int rgb ){
     
         Color color = new Color(rgb);
         int valor = 0;
-       switch(canal){
-           case ROJO:
+      
               valor = color.getRed();
-              break;
-           case VERDE:
-              valor = color.getGreen();
-              break;
-           case AZUL:
-              valor = color.getBlue();   
-              break;
-       }
+              
+           
+       
        
        return valor;
         
     }
     
-    public static int obtenerRGBPorCanal(int valor, CanalColor canal){
     
-       int aux = 0;
-       switch(canal){
-           case ROJO:
-              aux = new Color(valor,0, 0).getRGB();
-              break;
-           case VERDE:
-              aux = new Color(0,valor, 0).getRGB();
-              break;
-           case AZUL:
-          aux = new Color(0,0, valor).getRGB();
-              break;
-       }
-       
-       return aux;
-        
-    }
     
     public static int acumularColor(int color1, int color2 ){
      return color1 | color2;

@@ -10,40 +10,34 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import static java.awt.image.BufferedImage.TYPE_INT_RGB;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import listeners.ModificarImagenListener;
 
 /**
  *
  * @author working
  */
-public class JInternalFrameModificar extends javax.swing.JInternalFrame {
+public class JInternalFrameEscala extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form JInternalFrameModificar
      */
     
-    private JInternalFrameImagen internal;
     
-    
-    public JInternalFrameModificar( JInternalFrameImagen internal) {
-        this.internal = internal;
+    BufferedImage canva,canva2;
+ BufferedImage       bi;
+ JInternalFrameImagen nuevo2;
+ 
+    public JInternalFrameEscala( BufferedImage bi, JInternalFrameImagen nuevo2) {
         initComponents();
-        this.jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int x = Integer.parseInt(jTextFieldX.getText());
-                int y = Integer.parseInt(jTextFieldY.getText());
-                BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(internal.getImagenOriginal());
-                Color color = new Color(133,249,45);
-                for(int j = x ; j< x+20;j++){
-                    for(int m = y ; m < y+20;m++){
-                        bi.setRGB(j, m, color.getRGB());
-                    }
-                }
-                Image nueva = herramientas.HerramientasImagen.toImage(bi);
-                internal.setImagen(nueva);
-            }
-        });
+         
+        this.bi = bi;
+        this.nuevo2 = nuevo2;
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +74,7 @@ public class JInternalFrameModificar extends javax.swing.JInternalFrame {
                 .addComponent(jTextFieldY, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,16 +84,52 @@ public class JInternalFrameModificar extends javax.swing.JInternalFrame {
                     .addComponent(jTextFieldX, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldY, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+  
+          
+      
 
+Image nueva =   scaling(bi,Double.parseDouble(this.jTextFieldX.getText()),Double.parseDouble(this.jTextFieldY.getText()));
+              
+              nuevo2.setImagen(nueva);
+      
+        
+
+
+            }//GEN-LAST:event_jButton1ActionPerformed
+
+      public static Image scaling (BufferedImage sourceImage, double zoomX, double zoomY){
+        int newCols = (int) (sourceImage.getWidth() * zoomX);
+        int newRows = (int) (sourceImage.getHeight() * zoomY);
+        BufferedImage scaledImage = new BufferedImage(newCols,newRows,TYPE_INT_RGB);
+        
+        if((zoomX >= 1) && (zoomY >= 1))
+            for(int y = 0; y < sourceImage.getHeight(); y++)
+                for(int x = 0; x < sourceImage.getWidth(); x++){
+                        for(int y1 = 0; y1 < (int)zoomY; y1++)
+                            for(int x1 = 0; x1 < (int)zoomX; x1++)
+                                scaledImage.setRGB((int)(x * zoomX) + x1, (int)(y * zoomY) + y1, sourceImage.getRGB(x, y));
+                }
+        else if((zoomX < 1) && (zoomY < 1)){
+            int intervalX = (int) Math.rint((double)sourceImage.getWidth() / (double)(sourceImage.getWidth() - scaledImage.getWidth()));
+            int intervalY = (int) Math.rint((double)sourceImage.getHeight() / (double)(sourceImage.getHeight() - scaledImage.getHeight()));
+            int cX = 0;
+            int cY = 0;
+
+            for(int y = 0; y < scaledImage.getHeight(); y++)
+                for(int x = 0; x < scaledImage.getWidth(); x++)
+                    scaledImage.setRGB(x, y, sourceImage.getRGB(x * intervalX, y *  intervalY));
+        }
+        return scaledImage;
+    
+      
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

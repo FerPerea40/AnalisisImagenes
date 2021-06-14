@@ -42,10 +42,8 @@ public class GestorGrises {
 
     public void aplicarFiltro(NumeroComplejo[][] filtro) {
 
-        // recorrer el filtro 
         for (int x = 0; x < this.imagenOriginal.getWidth(); x++) {
             for (int y = 0; y < this.imagenOriginal.getHeight();y++) {
-                // obtener el color el RGB de la parte de frecuencias
                 if (filtro[x][y].getParteReal()<1){
                 int rgb = obtenerPixelDominioFrecuencias(x,y,true);
                 Color aux = new Color(rgb);
@@ -155,13 +153,13 @@ public class GestorGrises {
         int ejeY = encuadre ? (y + (altoImagen / 2)) % altoImagen : y;
         
         // recorrer por canal de color 
-        for (CanalColor canal: CanalColor.values()){
+      //  for (CanalColor canal: CanalColor.values()){
         NumeroComplejo[][] datos = representacionFrecuencias;
-        int nuevo =  HerramientasColor.obtenerValorPorCanal(color, canal);
+        int nuevo =  HerramientasColor.obtenerValorPorCanal(color);
         
         datos[ejeX][ejeY] = new NumeroComplejo(nuevo,nuevo);
         
-        }
+       // }
         
     }
 }

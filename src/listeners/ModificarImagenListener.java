@@ -9,6 +9,7 @@ import espacial.Histograma;
 import gui.JFramePrincipal;
 import gui.JInternalFrameConv;
 import gui.JInternalFrameConv5;
+import gui.JInternalFrameEscala;
 import gui.JInternalFrameExpa;
 import gui.JInternalFrameFiltro;
 import gui.JInternalFrameIlumi;
@@ -16,11 +17,16 @@ import gui.JInternalFrameImagen;
 import gui.JInternalFrameKirsch;
 import gui.JInternalFrameModificar;
 import gui.JInternalFrameSal;
+import gui.JInternalFrameTraslacion1;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import static java.awt.image.BufferedImage.TYPE_BYTE_BINARY;
+import static java.awt.image.BufferedImage.TYPE_INT_RGB;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JMenuItem;
 
 /**
@@ -152,7 +158,85 @@ public class ModificarImagenListener implements ActionListener{
 //            internalNuevo22.setVisible(true);
 //            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo22);
         }
-                   
+                        if (item.getText().equals("Canva")){
+                            
+                             BufferedImage canva = new BufferedImage(1000,1000,TYPE_INT_RGB); 
+                             
+                             
+                for(int i=0; i <canva.getWidth();i++){
+                         for(int j=0; j <canva.getHeight();j++){
+                canva.setRGB(i, j, new Color(255,255,255).getRGB());}
+                }
+                
+                
+                              BufferedImage canva2 = new BufferedImage(1000,1000,TYPE_INT_RGB); 
+                             
+                             
+                for(int i=0; i <canva.getWidth();i++){
+                         for(int j=0; j <canva.getHeight();j++){
+                canva2.setRGB(i, j, new Color(255,255,255).getRGB());}
+                }
+                
+                JInternalFrameImagen nuevo2 = new JInternalFrameImagen(herramientas.HerramientasImagen.toBufferedImage(canva2));
+                nuevo2.setVisible(true);
+                this.framePrincipal.getjDesktopPanePrincipal().add(nuevo2);
+                            
+                Image imagen = herramientas.HerramientasImagen.abrirImagen();
+                
+               
+                
+                BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagen);
+               
+                for(int i=0; i <bi.getWidth();i++){
+                         for(int j=0; j <bi.getHeight();j++){
+                        canva2.setRGB(i, j, bi.getRGB(i,j));
+                        
+                        }
+           
+                        }
+               nuevo2.setImagen(herramientas.HerramientasImagen.toImage(canva2));
+      JInternalFrameTraslacion1 Tf= new JInternalFrameTraslacion1(canva,bi,nuevo2);
+                        Tf.setVisible(true);
+                        this.framePrincipal.getjDesktopPanePrincipal().add(Tf);
+//Image nueva2 = herramientas.HerramientasImagen.FrecuenciasInv(imagen);
+
+//            JInternalFrameImagen internalNuevo2 = new JInternalFrameImagen(nueva);
+//            internalNuevo2.setVisible(true);
+//            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo2);
+            
+//            
+//            JInternalFrameImagen internalNuevo22 = new JInternalFrameImagen(nueva2);
+//            internalNuevo22.setVisible(true);
+//            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo22);
+        }     
+                        
+                        
+                        
+                         if (item.getText().equals("Escalable")){
+           JInternalFrameImagen internal2 = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+             
+             Image imagen = internal2.getImagenOriginal();
+              BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(internal2.getImagenOriginal());
+internal2.setImagen(imagen);
+           
+        JInternalFrameEscala Tf= new JInternalFrameEscala(bi,internal2);
+                        Tf.setVisible(true);
+                        this.framePrincipal.getjDesktopPanePrincipal().add(Tf);
+              
+                
+                
+             
+
+
     }
+    }
+    
+    
+    
+    
+   
+
+
+    
     
 }

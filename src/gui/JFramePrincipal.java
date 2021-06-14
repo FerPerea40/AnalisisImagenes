@@ -34,6 +34,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem12.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem13.addActionListener(new ModificarImagenListener(this));
         this.jMenuItem14.addActionListener(new ModificarImagenListener(this));
+        this.jMenuItem15.addActionListener(new ModificarImagenListener(this));
 
     }
 
@@ -63,6 +64,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -143,7 +145,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem14.setText("Frecuencias Grises");
         jMenu2.add(jMenuItem14);
 
-        jMenuItem13.setText("Frecuencias RGB");
+        jMenuItem15.setText("Escalable");
+        jMenu2.add(jMenuItem15);
+
+        jMenuItem13.setText("Canva");
         jMenu2.add(jMenuItem13);
 
         jMenuBar1.add(jMenu2);
@@ -227,6 +232,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

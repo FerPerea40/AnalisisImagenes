@@ -93,9 +93,14 @@
                 <Property name="text" type="java.lang.String" value="Frecuencias Grises"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem15">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Escalable"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem13">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Frecuencias RGB"/>
+                <Property name="text" type="java.lang.String" value="Canva"/>
               </Properties>
             </MenuItem>
           </SubComponents>
